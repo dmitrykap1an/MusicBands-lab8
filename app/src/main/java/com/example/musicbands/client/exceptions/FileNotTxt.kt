@@ -1,10 +1,10 @@
 package com.example.musicbands.client.exceptions
 
-class EmptyArgumentException : Exception() {
+class FileNotTxt : Exception() {
 
     override fun toString(): String {
 
-        return "Пустая команда"
+        return "файл неверного формата"
 
     }
 }

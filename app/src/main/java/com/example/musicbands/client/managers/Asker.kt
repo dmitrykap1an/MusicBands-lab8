@@ -1,8 +1,8 @@
 package com.example.lab8.client.managers
 
-import com.example.lab8.client.exceptions.AnswerException
-import com.example.lab8.client.exceptions.UserLoginException
-import com.example.lab8.client.exceptions.UserPasswordException
+import com.example.musicbands.client.exceptions.AnswerException
+import com.example.musicbands.client.exceptions.UserLoginException
+import com.example.musicbands.client.exceptions.UserPasswordException
 import java.util.*
 
 class Asker {

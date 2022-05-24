@@ -1,8 +1,8 @@
 package com.example.musicbands.client.managers
 
 import com.example.lab8.client.data.*
-import com.example.lab8.client.exceptions.EmptyArgumentException
-import com.example.lab8.client.exceptions.IllegalValueException
+import com.example.musicbands.client.exceptions.EmptyArgumentException
+import com.example.musicbands.client.exceptions.IllegalValueException
 import com.example.musicbands.client.data.Coordinates
 import com.example.musicbands.client.data.MusicBand
 import com.example.musicbands.client.data.Person

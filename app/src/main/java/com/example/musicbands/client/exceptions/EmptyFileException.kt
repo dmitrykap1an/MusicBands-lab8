@@ -1,10 +1,8 @@
 package com.example.musicbands.client.exceptions
 
-class EmptyArgumentException : Exception() {
+class EmptyFileException : Exception(){
 
     override fun toString(): String {
-
-        return "Пустая команда"
-
+        return "Пустая коллекция"
     }
 }

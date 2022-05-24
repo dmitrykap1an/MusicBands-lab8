@@ -21,7 +21,8 @@ class MusicBand : Serializable {
         }
     }
 
-    constructor(name: String, coordinates: Coordinates, numberOfParticipants: Long, description: String, genre: MusicGenre, frontMan: Person){
+    constructor(name: String, coordinates: Coordinates, numberOfParticipants: Long, description: String, genre:
+    MusicGenre, frontMan: Person){
 
         this.name = name;
         this.coordinates = coordinates
@@ -31,6 +32,7 @@ class MusicBand : Serializable {
         this.frontMan = frontMan
         creationDate = Timestamp(System.currentTimeMillis())
         id = counter++
+
     }
 
     fun getFrontMann(): Person {
@@ -48,6 +50,7 @@ class MusicBand : Serializable {
     fun getGenre(): String {
         return genre.toString()
     }
+
 
     override fun toString(): String {
         return """

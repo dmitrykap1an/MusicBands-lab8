@@ -1,4 +1,4 @@
-package com.example.lab8.client.exceptions
+package com.example.musicbands.client.exceptions
 
 class CommandException : Exception() {
 

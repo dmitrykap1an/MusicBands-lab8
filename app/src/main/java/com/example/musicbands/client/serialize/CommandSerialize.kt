@@ -1,4 +1,4 @@
-package com.example.lab8.client.serialize
+package com.example.musicbands.client.serialize
 
 import com.example.musicbands.client.data.MusicBand
 import java.io.Serializable

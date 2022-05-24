@@ -1,6 +1,6 @@
 package com.example.lab8.client.managers
 
-import com.example.lab8.client.serialize.UserSerialize
+import com.example.musicbands.client.serialize.UserSerialize
 
 class AuthManager {
 

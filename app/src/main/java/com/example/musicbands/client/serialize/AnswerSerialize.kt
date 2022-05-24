@@ -1,7 +1,7 @@
-package com.example.lab8.client.serialize
+package com.example.musicbands.client.serialize
 
-import java.io.Serializable
-data class AnswerSerialize(private val message : String) : Serializable{
+
+data class AnswerSerialize(private val message : String){
 
 
     fun getMessage() = message

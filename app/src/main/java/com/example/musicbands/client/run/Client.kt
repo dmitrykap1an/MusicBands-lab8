@@ -1,11 +1,11 @@
 package com.example.lab8.client.run
 
-import com.example.lab8.client.exceptions.CommandException
+import com.example.musicbands.client.exceptions.CommandException
 import com.example.lab8.client.managers.CommandFinder
 import com.example.musicbands.client.managers.InputData
 import com.example.lab8.client.managers.TypeOfAuth
-import com.example.lab8.client.serialize.AnswerSerialize
-import com.example.lab8.client.serialize.UserSerialize
+import com.example.musicbands.client.serialize.AnswerSerialize
+import com.example.musicbands.client.serialize.UserSerialize
 import java.io.*
 import java.net.ConnectException
 import java.net.InetSocketAddress

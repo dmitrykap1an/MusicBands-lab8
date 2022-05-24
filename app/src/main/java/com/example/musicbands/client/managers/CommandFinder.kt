@@ -1,7 +1,7 @@
 package com.example.lab8.client.managers
 
-import com.example.lab8.client.exceptions.CommandException
-import com.example.lab8.client.serialize.CommandSerialize
+import com.example.musicbands.client.exceptions.CommandException
+import com.example.musicbands.client.serialize.CommandSerialize
 import com.example.musicbands.client.managers.InputData
 
 /*
