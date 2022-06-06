@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MusicBands</string>
+    <string name="hello_world">Hello World</string>
+    <string name="kotlin">kotlin</string>
 </resources>

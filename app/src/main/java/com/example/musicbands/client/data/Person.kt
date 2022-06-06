@@ -10,8 +10,7 @@ class Person : Serializable {
     var name: String
     var height: Int
     var passportID: String
-
-   var location: Location
+    var location: Location
 
     constructor(name: String, height: Int, location: Location) {
         this.name = name
