@@ -144,7 +144,7 @@ class CheckData{
         val z : Long;
             return try {
                 z = strZ.toLong();
-                Pair(0, "OK")
+                Pair(z, "OK")
             } catch (e : NoSuchElementException) {
                 Pair(0,"Координата Z не распознана!")
             } catch (e : NumberFormatException) {

@@ -1,5 +1,6 @@
 package com.example.lab8.client.managers
 
+import com.example.musicbands.client.managers.TypeOfAuth
 import com.example.musicbands.client.serialize.UserSerialize
 
 class AuthManager {

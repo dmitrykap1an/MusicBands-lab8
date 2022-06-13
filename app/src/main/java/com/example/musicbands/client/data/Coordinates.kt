@@ -4,8 +4,8 @@ import java.io.Serializable
 
 
 data class Coordinates(//Максимальное значение поля: 220, Поле не может быть null
-    val x: Long, val y: Double
-) : Serializable {
+    var x: Long, var y: Double
+) {
 
     override fun toString(): String {
         return "x : $x, y : $y"

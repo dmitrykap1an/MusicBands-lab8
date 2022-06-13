@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import com.example.musicbands.R
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,7 +33,7 @@ private var message = ""
 fun MainContent(navController: NavController) {
 
     Text(
-        text = "My Bands",
+        text = stringResource(R.string.myBands),
         color = DarkTextColor,
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
@@ -83,7 +85,7 @@ fun MainContent(navController: NavController) {
     Column(modifier = Modifier.fillMaxSize()) {
 
         Text(
-            text = "Commands",
+            text = stringResource(id = R.string.commands),
             color = DarkTextColor,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
@@ -102,7 +104,7 @@ fun MainContent(navController: NavController) {
                 Button(
                     onClick = {
                         val command = CommandSerialize("help")
-                        message = Load.requests!!.sendCommands(command).getMessage()
+                        Load.requests!!.sendCommands(command)
                         navController.navigate(Screen.Home.route)
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -116,7 +118,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "Help",
+                        text = stringResource(id = R.string.help),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -129,7 +131,7 @@ fun MainContent(navController: NavController) {
                 Button(
                     onClick = {
                         val command = CommandSerialize("info")
-                        message = Load.requests!!.sendCommands(command).getMessage()
+                        Load.requests!!.sendCommands(command)
                         navController.navigate(Screen.Home.route)
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -143,7 +145,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "Info",
+                        text = stringResource(id = R.string.info),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -168,7 +170,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "Add",
+                        text = stringResource(id = R.string.add),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -193,7 +195,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "Update id",
+                        text = stringResource(id = R.string.updateId),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -218,7 +220,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "remove element by id",
+                        text = stringResource(id = R.string.remove_element_by_id),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -231,7 +233,7 @@ fun MainContent(navController: NavController) {
                 Button(
                     onClick = {
                         Data.allItems.clear()
-                        setMessage(Load.requests!!.sendCommands(CommandSerialize("clear")).getMessage())
+                        Load.requests!!.sendCommands(CommandSerialize("clear"))
                         navController.navigate(Screen.Home.route)
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -245,7 +247,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "Clear",
+                        text = stringResource(id = R.string.clear),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -283,11 +285,11 @@ fun MainContent(navController: NavController) {
                 Button(
                     onClick = {
                         val commandSerialize = CommandSerialize("remove_first")
-                        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
+                        Load.requests!!.sendCommands(commandSerialize)
                         if(message == "Первый элемент удален"){
                             Data.allItems.remove(Data.allItems[0])
                         }
-                        else setMessage(message)
+                        else setMessage(message, navController)
                         navController.navigate(Screen.Home.route)
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -301,7 +303,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "remove first",
+                        text = stringResource(id = R.string.remove_first),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -327,7 +329,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "remove greater",
+                        text = stringResource(id = R.string.remove_greater),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -340,8 +342,7 @@ fun MainContent(navController: NavController) {
                 Button(
                     onClick = {
                         val commandSerialize = CommandSerialize("history")
-                        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
-                        setMessage(message)
+                        Load.requests!!.sendCommands(commandSerialize)
                         navController.navigate(Screen.Home.route)
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -355,7 +356,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "history",
+                        text = stringResource(id = R.string.history),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -380,7 +381,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "remove all by description",
+                        text = stringResource(id = R.string.remove_all_by_description),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -405,35 +406,7 @@ fun MainContent(navController: NavController) {
                         .clip(RoundedCornerShape(10.dp)),
                 ) {
                     Text(
-                        text = "count less than number of participants",
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.fillMaxSize(),
-                        textAlign = TextAlign.Center,
-                        overflow = TextOverflow.Visible
-                    )
-                }
-            }
-
-            item {
-                Button(
-                    onClick = {
-                        val commandSerialize = CommandSerialize("print_field_descending_front_man")
-                        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
-                        setMessage(message)
-                        navController.navigate(Screen.Home.route)
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Purple,
-                        contentColor = WhiteTextColor
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(5.dp)
-                        .height(30.dp)
-                        .clip(RoundedCornerShape(10.dp)),
-                ) {
-                    Text(
-                        text = "print field descending front man",
+                        text = stringResource(id = R.string.count_less_than_number_of_participants),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxSize(),
                         textAlign = TextAlign.Center,
@@ -456,6 +429,8 @@ fun MainContent(navController: NavController) {
     }
 }
 
-fun setMessage(mes: String){
+fun setMessage(mes: String, navController: NavController? = null){
     message = mes
+    println(mes)
+    navController!!.navigate(Screen.Home.route)
 }

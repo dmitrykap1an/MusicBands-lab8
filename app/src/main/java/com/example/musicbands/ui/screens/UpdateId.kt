@@ -3,6 +3,7 @@ package com.example.musicbands.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import com.example.musicbands.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -11,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +53,7 @@ fun UpdateId(navController: NavController) {
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 120.dp),
     ) {
         Text(
-            text = "Update Id command",
+            text = stringResource(id = R.string.updateId),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -229,7 +231,7 @@ fun UpdateId(navController: NavController) {
                 frontManLocationY, frontManLocationZ, id)
         }) {
             Text(
-                text = "Добавить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -280,14 +282,14 @@ private fun onCLick(navController: NavController, name: String, coordinateX: Str
             newGenre.first!!, frontMan
         )
         val commandSerialize = CommandSerialize("update",  id, musicBand)
-        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
-        if(message == "Команда update выполнена"){
-            setMessage(message)
-            Data.allItems.sortBy { it.name }
-        }
-        else{
-            info = message
-        }
+        Load.requests!!.sendCommands(commandSerialize)
+//        if(message == "Команда update выполнена"){
+//            Data.allItems.sortBy { it.name }
+//        }
+//        else{
+//            info = message
+//        }
+        // FIXME:
         navController.navigate(Screen.Home.route)
     }
     else{

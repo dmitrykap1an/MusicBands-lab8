@@ -3,6 +3,7 @@ package com.example.musicbands.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
+import com.example.musicbands.R
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,7 +34,7 @@ fun CountLessThan(navController: NavController) {
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 140.dp),
     ) {
         Text(
-            text = "count less than",
+            text = stringResource(id = R.string.count_less_than_number_of_participants),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -83,7 +85,7 @@ fun CountLessThan(navController: NavController) {
             onClick(navController = navController, count)
         }) {
             Text(
-                text = "Выполнить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -101,9 +103,9 @@ private fun onClick(navController: NavController, count: String){
         navController.navigate(Screen.CountLessThan.route)
     }
     val commandSerialize = CommandSerialize("count_less_than_number_of_participants", count)
-    val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
+    Load.requests!!.sendCommands(commandSerialize)
+    // FIXME:
     info = ""
-    setMessage(message)
     navController.navigate(Screen.Home.route)
 
 }

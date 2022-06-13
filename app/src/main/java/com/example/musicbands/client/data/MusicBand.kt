@@ -4,15 +4,15 @@ import com.example.lab8.client.data.MusicGenre
 import java.io.Serializable
 import java.sql.Timestamp
 
-class MusicBand : Serializable {
-    val id: Int
-    val name : String;
-    val coordinates : Coordinates
-    val numberOfParticipants: Long
-    val description: String
-    val genre: MusicGenre
-    val frontMan: Person
-    val creationDate : Timestamp
+class MusicBand{
+    var id: Int
+    var name : String;
+    var coordinates : Coordinates
+    var numberOfParticipants: Long
+    var description: String
+    var genre: MusicGenre
+    var frontMan: Person
+    var creationDate : Timestamp
 
     companion object {
         private var counter = 1

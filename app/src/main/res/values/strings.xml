@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">MusicBands</string>
-    <string name="hello_world">Hello World</string>
-    <string name="kotlin">kotlin</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="authorization">Authorization</string>
+    <string name="profile">Profile</string>
+    <string name="networkError">Network connection error</string>
+    <string name="commands">Commands</string>
+    <string name="myBands">My Bands</string>
+    <string name="homePage">HomePage</string>
+    <string name="help">Help</string>
+    <string name="info">Info</string>
+    <string name="add">Add</string>
+    <string name="updateId">Update ID</string>
+    <string name="remove_element_by_id">remove element by id</string>
+    <string name="clear">Clear</string>
+    <string name="exit">Exit</string>
+    <string name="remove_first">Remove First</string>
+    <string name="remove_greater">Remove Greater</string>
+    <string name="history">History</string>
+    <string name="remove_all_by_description">Remove all by description</string>
+    <string name="count_less_than_number_of_participants">Count less than number of participants</string>
+    <string name="language">Language</string>
+    <string name="perform">Execute</string>
+
 </resources>

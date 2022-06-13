@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">MusicBands</string>
+    <string name="login">Вход</string>
+    <string name="registration">Регистрация</string>
+    <string name="authorization">Авторизация</string>
+    <string name="profile">Профиль</string>
+    <string name="networkError">Ошибка подключения к сети</string>
+    <string name="commands">Команды</string>
+    <string name="myBands">Мои группы</string>
+    <string name="homePage">Домашняя страница</string>
+    <string name="help">Помощь</string>
+    <string name="info">Информация</string>
+    <string name="add">Добавить</string>
+    <string name="updateId">Обновить по ID</string>
+    <string name="remove_element_by_id">Удалить элемент по ID</string>
+    <string name="clear">Очистить</string>
+    <string name="exit">Выйти</string>
+    <string name="remove_first">Удалить первый</string>
+    <string name="remove_greater">Удалить больший</string>
+    <string name="history">История</string>
+    <string name="remove_all_by_description">Удалить все по описанию</string>
+    <string name="count_less_than_number_of_participants">Количество групп, у которых количество участников меньше, чем</string>
+    <string name="language">Язык</string>
+    <string name="perform">Выполнить</string>
+
 </resources>

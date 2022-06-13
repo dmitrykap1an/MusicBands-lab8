@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.util.*
 
 
-enum class MusicGenre : Serializable {
+enum class MusicGenre{
     RAP, HIP_HOP, BLUES, POP, MATH_ROCK;
 
     companion object {

@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -19,7 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.lab8.client.managers.TypeOfAuth
+import com.example.musicbands.R
+import com.example.musicbands.client.managers.TypeOfAuth
 import com.example.musicbands.ui.states.Screen
 import com.example.musicbands.ui.theme.DarkTextColor
 import com.example.musicbands.ui.states.Load
@@ -50,10 +52,10 @@ fun Greeting(id : Long = 0, navController : NavController) {
     ) {
         Button(onClick = {
             Load.typeOfAuth = TypeOfAuth.Registered
-            navController.navigate(route = Screen.Authentication.route)
+            navController.navigate(route = Screen.Registration.route)
         }) {
             Text(
-                text = "Регистрация",
+                text = stringResource(R.string.registration),
                 Modifier.padding(horizontal = 30.dp, vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -68,17 +70,17 @@ fun Greeting(id : Long = 0, navController : NavController) {
         verticalArrangement = Arrangement.Bottom
     ) {
         Button(onClick = {
-            Load.typeOfAuth = TypeOfAuth.NotRegistered
             navController.navigate(Screen.Authentication.route)
         }) {
             Text(
-                text = "Войти",
+                text = stringResource(R.string.login),
                 Modifier.padding(horizontal = 60.dp, vertical = 10.dp),
                 color = DarkTextColor
             )
         }
     }
 }
+
 
 @Composable
 @Preview(showBackground = true)

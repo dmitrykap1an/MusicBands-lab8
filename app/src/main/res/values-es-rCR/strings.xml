@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">MusicBands</string>
+    <string name="login">Entrada</string>
+    <string name="registration">Registro</string>
+    <string name="authorization">Autorización</string>
+    <string name="profile">Perfil</string>
+    <string name="networkError">Error de conexión de red</string>
+    <string name="commands">Commands</string>
+    <string name="myBands">Mis bandas</string>
+    <string name="homePage">Cabeza</string>
+    <string name="help">Ayudar</string>
+    <string name="info">Información</string>
+    <string name="add">Añadir</string>
+    <string name="updateId">Actualizar ID</string>
+    <string name="remove_element_by_id">Eliminar elemento por ID</string>
+    <string name="clear">Claro</string>
+    <string name="exit">Salida</string>
+    <string name="remove_first">Quitar primero</string>
+    <string name="remove_greater">Quitar mayor</string>
+    <string name="history">Historia</string>
+    <string name="remove_all_by_description">Usuń wszystko według opisu</string>
+    <string name="count_less_than_number_of_participants">Liczą mniej niż liczba uczestników</string>
+    <string name="language">Idioma</string>
+    <string name="perform">Ejecutar</string>
 </resources>

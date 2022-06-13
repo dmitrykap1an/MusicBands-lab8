@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,6 +24,7 @@ import com.example.musicbands.client.serialize.CommandSerialize
 import com.example.musicbands.ui.states.Load
 import com.example.musicbands.ui.states.Screen
 import com.example.musicbands.ui.theme.DarkTextColor
+import com.example.musicbands.R
 
 @Composable
 fun RemoveByDescription(navController: NavController) {
@@ -31,7 +33,7 @@ fun RemoveByDescription(navController: NavController) {
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 140.dp),
     ) {
         Text(
-            text = "remove by description",
+            text = stringResource(id = R.string.remove_all_by_description),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -69,7 +71,7 @@ fun RemoveByDescription(navController: NavController) {
             onClick(navController = navController, description)
         }) {
             Text(
-                text = "Выполнить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -79,8 +81,8 @@ fun RemoveByDescription(navController: NavController) {
 
 private fun onClick(navController: NavController, description: String){
     val commandSerialize = CommandSerialize("remove_all_by_description", description)
-    val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
-    setMessage(message)
+    Load.requests!!.sendCommands(commandSerialize)
+    // FIXME:
     navController.navigate(Screen.Home.route)
 }
 

@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.musicbands.ui.screens.*
-import com.example.musicbands.ui.theme.DetailScreen
+import com.example.musicbands.ui.screens.DetailScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -24,7 +24,7 @@ fun NavGraph(navController: NavHostController) {
          composable(
              route = Screen.Detail.route
          ) {
-              DetailScreen(Load.load)
+              DetailScreen(Load.load, navController)
          }
         composable(
             route = Screen.Greeting.route
@@ -80,6 +80,11 @@ fun NavGraph(navController: NavHostController) {
             route = Screen.CountLessThan.route
         ){
             CountLessThan(navController = navController)
+        }
+        composable(
+            route = Screen.Registration.route
+        ){
+            Registration(navController = navController)
         }
     }
 }

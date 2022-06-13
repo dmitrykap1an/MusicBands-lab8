@@ -3,6 +3,7 @@ package com.example.musicbands.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
+import com.example.musicbands.R
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,7 +33,7 @@ fun RemoveGreater(navController: NavController) {
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 140.dp),
     ) {
         Text(
-            text = "remove greater",
+            text = stringResource(id = R.string.remove_greater),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -69,7 +71,7 @@ fun RemoveGreater(navController: NavController) {
             onClick(name, navController = navController)
         }) {
             Text(
-                text = "Выполнить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -79,8 +81,8 @@ fun RemoveGreater(navController: NavController) {
 
 private fun onClick(name: String, navController: NavController){
     val command = CommandSerialize("remove_greater", name)
-    val message = Load.requests!!.sendCommands(command).getMessage()
-    setMessage(message)
+    Load.requests!!.sendCommands(command)
+    // FIXME:
     navController.navigate(Screen.Home.route)
 }
 

@@ -5,7 +5,7 @@ import java.io.Serializable
 import java.util.*
 
 
-class Person : Serializable {
+class Person{
 
     var name: String
     var height: Int

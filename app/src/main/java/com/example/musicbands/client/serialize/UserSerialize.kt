@@ -1,7 +1,6 @@
 package com.example.musicbands.client.serialize
 
-import com.example.lab8.client.managers.TypeOfAuth
-import java.io.Serializable
+import com.example.musicbands.client.managers.TypeOfAuth
 
 data class UserSerialize(private val typeOfAuth: TypeOfAuth, private val name : String, private val password : String ){
 

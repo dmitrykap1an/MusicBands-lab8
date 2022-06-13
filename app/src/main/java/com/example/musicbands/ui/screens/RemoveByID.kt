@@ -3,6 +3,7 @@ package com.example.musicbands.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
+import com.example.musicbands.R
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,7 +38,7 @@ fun RemoveBYID(navController: NavController) {
         modifier = Modifier.padding(vertical = 10.dp, horizontal = 140.dp),
     ) {
         Text(
-            text = "remove by id",
+            text = stringResource(id = R.string.remove_element_by_id),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -87,7 +89,7 @@ fun RemoveBYID(navController: NavController) {
             onClick(id, navController = navController)
         }) {
             Text(
-                text = "Выполнить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -109,9 +111,8 @@ private fun onClick(id: String, navController: NavController){
             Data.allItems.remove(it)
         }
         val commandSerialize = CommandSerialize("remove_by_id", id)
-        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
+        Load.requests!!.sendCommands(commandSerialize)
         info = ""
-        setMessage(message)
         navController.navigate(Screen.Home.route)
     }
     catch (e: NumberFormatException){

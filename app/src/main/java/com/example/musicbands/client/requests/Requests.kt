@@ -1,10 +1,12 @@
 package com.example.musicbands.client.requests
 
-import com.example.lab8.client.managers.TypeOfAuth
+import androidx.navigation.NavController
+import com.example.musicbands.client.managers.TypeOfAuth
 import com.example.musicbands.client.data.MusicBand
 import com.example.musicbands.client.serialize.AnswerSerialize
 import com.example.musicbands.client.serialize.CommandSerialize
 import com.example.musicbands.client.serialize.UserSerialize
+import com.example.musicbands.ui.screens.setMessage
 import com.example.musicbands.ui.states.Messages
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
@@ -19,8 +21,9 @@ import java.nio.channels.SocketChannel
 import java.util.concurrent.Callable
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
-class Requests(private val typeOfAuth: TypeOfAuth, private val userName: String, private val password: String){
+class Requests(private val userName: String, private val password: String, private val navController: NavController){
 
     private lateinit var clientSocket: SocketChannel
     private lateinit var outt: ObjectOutputStream
@@ -46,7 +49,7 @@ class Requests(private val typeOfAuth: TypeOfAuth, private val userName: String,
         return future.get()
     }
 
-    fun registration(): Pair<Boolean, String> {
+    fun registration(typeOfAuth: TypeOfAuth): Pair<Boolean, String> {
 
         val future = executors.submit(Callable<Pair<Boolean, String>>{
             try {
@@ -78,7 +81,7 @@ class Requests(private val typeOfAuth: TypeOfAuth, private val userName: String,
         return future.get()
     }
 
-    fun sendCommands(command: CommandSerialize): AnswerSerialize{
+    fun sendCommands(command: CommandSerialize){
         try {
             val future = executors.submit(Callable {
 
@@ -86,7 +89,6 @@ class Requests(private val typeOfAuth: TypeOfAuth, private val userName: String,
                     val requests = gson.toJson(command)
                     outt.writeUTF(requests)
                     outt.flush()
-
                     val answer = inn.readUTF()
                     val response = gson.fromJson(answer, AnswerSerialize::class.java)
                     response
@@ -95,11 +97,18 @@ class Requests(private val typeOfAuth: TypeOfAuth, private val userName: String,
 
                 }
             })
-            return future.get()
+            executors.submit {
+                while (!future.isDone){
+                    if(future.isDone){
+                        setMessage(future.get().getMessage())
+                        break;
+                    }
+                }
+            }
         }
         catch (e: java.io.EOFException){
             openClient()
-            return AnswerSerialize("Ошибка подключения")
+            setMessage("Ошибка соединения")
         }
 
     }

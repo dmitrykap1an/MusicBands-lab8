@@ -6,23 +6,21 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import com.example.musicbands.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.lab8.client.managers.TypeOfAuth
 import com.example.musicbands.ui.states.Load
 import com.example.musicbands.ui.states.Screen
 import com.example.musicbands.ui.theme.*
@@ -31,12 +29,12 @@ import com.example.musicbands.ui.theme.*
 fun Account(name : String, password: String, navController: NavController){
 
         Text(
-            text = "Профиль",
+            text = stringResource(id = R.string.profile),
             fontSize = 20.sp,
             color = DarkTextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .background(WhiteBackgroundColor) //background color
+                .background(WhiteBackgroundColor)
                 .fillMaxSize()
                 .padding(vertical = 15.dp)
         )
@@ -52,15 +50,17 @@ fun Account(name : String, password: String, navController: NavController){
             verticalAlignment = Alignment.Top
         ){
                 Image(
-                    modifier = Modifier.size(height = 20.dp, width = 20.dp),
-                    contentScale = ContentScale.FillHeight,
-                    imageVector = Icons.Default.AccountBox,
+                    modifier = Modifier.size(height = 90.dp, width = 90.dp),
+                    contentScale = ContentScale.Crop,
+                    imageVector = Icons.Filled.AccountBox,
                     contentDescription = "User's Logo",
                     colorFilter = ColorFilter.tint(Color.Gray)
                 )
                 Text(
+                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
                     text = name,
-                    fontSize = 15.sp,
+                    fontWeight = FontWeight.W700,
+                    fontSize = 16.sp,
                     color = Purple,
                 )
 
@@ -68,36 +68,40 @@ fun Account(name : String, password: String, navController: NavController){
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 0.dp),
+                .padding(horizontal = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                text = "Язык",
+                text = stringResource(id = R.string.language),
                 color = Color.Black
             )
+            TextButton(
+                onClick = { navController.navigate(Screen.LanguageScreen.route) },
+                modifier = Modifier
+            ) {
+               Text(
+                    text = Load.currentLanguage,
+                    color = Color.Gray
+                )
+            }
+
+        }
+        TextButton(
+            onClick = {
+                navController.navigate(route = Screen.Greeting.route)
+                Load.typeOfAuth = null
+                      },
+            colors = ButtonDefaults.buttonColors(backgroundColor = WhiteBackgroundColor),
+            modifier = Modifier.padding(horizontal = 170.dp)
+        ){
             Text(
-                text = "Русский",
-                color = Color.Gray
+                text = stringResource(id = R.string.exit),
+                color = error
             )
         }
 
-        Column(
-            horizontalAlignment = Alignment.Start,
-        ) {
-            Button(
-                onClick = { navController.navigate(route = Screen.Greeting.route) },
-                colors = ButtonDefaults.buttonColors(backgroundColor = WhiteBackgroundColor),
-                modifier = Modifier.padding(horizontal = 175.dp)
-            ){
-                Text(
-                    text = "Выйти",
-                    color = error
-                )
-            }
-        }
-
-
     }
+
 }
 
 

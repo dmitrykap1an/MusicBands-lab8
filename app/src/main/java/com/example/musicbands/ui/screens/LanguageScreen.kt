@@ -106,7 +106,7 @@ fun LanguageScreen(
         item {
             Button(
                 onClick = {
-                    Load.currentLanguage = Languages.Norwegian.nameOfLanguage
+                    Load.currentLanguage = Languages.English.nameOfLanguage
                     navController.navigate(Screen.Profile.route)
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -120,7 +120,7 @@ fun LanguageScreen(
                     .clip(RoundedCornerShape(10.dp)),
             ) {
                 Text(
-                    text = Languages.Norwegian.nameOfLanguage,
+                    text = Languages.English.nameOfLanguage,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.fillMaxSize(),
                     textAlign = TextAlign.Center,

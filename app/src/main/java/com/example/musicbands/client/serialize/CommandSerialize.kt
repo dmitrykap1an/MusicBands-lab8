@@ -3,7 +3,7 @@ package com.example.musicbands.client.serialize
 import com.example.musicbands.client.data.MusicBand
 import java.io.Serializable
 
-class CommandSerialize : Serializable {
+class CommandSerialize{
 
     private  val commandName : String;
     private val commandArgument : String?;

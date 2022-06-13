@@ -3,6 +3,7 @@ package com.example.musicbands.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import com.example.musicbands.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -11,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,6 +29,7 @@ import com.example.musicbands.ui.states.Data
 import com.example.musicbands.ui.states.Load
 import com.example.musicbands.ui.states.Screen
 import com.example.musicbands.ui.theme.DarkTextColor
+import java.util.concurrent.Executors
 
 private var message: String = ""
 @Composable
@@ -48,7 +51,7 @@ fun Add(id: Long = 0, navController: NavController) {
        modifier = Modifier.padding(vertical = 10.dp, horizontal = 120.dp),
     ) {
         Text(
-            text = "Add command",
+            text = stringResource(id = R.string.add),
             fontSize = 20.sp,
             color = DarkTextColor
         )
@@ -202,7 +205,7 @@ fun Add(id: Long = 0, navController: NavController) {
                 frontManLocationY, frontManLocationZ)
         }) {
             Text(
-                text = "Добавить",
+                text = stringResource(id = R.string.perform),
                 Modifier.padding(vertical = 10.dp),
                 color = DarkTextColor
             )
@@ -235,7 +238,6 @@ private fun onCLick(navController: NavController, name: String, coordinateX: Str
             cnt++
         }
     }
-
     if(cnt == 0){
         val coordinates = Coordinates(newCoordinateX.first, newCoordinateY.first)
         val location = Location(newFrontManLocationX.first, newFrontManLocationY.first, newFrontManLocationZ.first)
@@ -244,8 +246,22 @@ private fun onCLick(navController: NavController, name: String, coordinateX: Str
             name, coordinates, newNumberOfParticipants.first, description,
             newGenre.first!!, frontMan
         )
-        val commandSerialize = CommandSerialize("add", musicBand)
-        val message = Load.requests!!.sendCommands(commandSerialize).getMessage()
+        val commandSerialize = CommandSerialize("add", musicBand = musicBand)
+        Load.requests!!.sendCommands(commandSerialize)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (message == ""){
             setMessage("Команда Add выполнена")
             Data.allItems.add(musicBand)

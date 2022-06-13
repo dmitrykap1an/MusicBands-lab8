@@ -1,6 +1,8 @@
 package com.example.musicbands.ui.screens
 
 import android.app.Activity
+import android.content.Context
+import android.widget.TextView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,34 +26,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.musicbands.R
-import com.example.musicbands.client.managers.RefreshUITask
 import com.example.musicbands.client.managers.TypeOfAuth
 import com.example.musicbands.client.requests.Requests
+import com.example.musicbands.client.serialize.AnswerSerialize
 import com.example.musicbands.client.serialize.CommandSerialize
-import com.example.musicbands.ui.states.Screen
-import com.example.musicbands.ui.theme.DarkTextColor
 import com.example.musicbands.ui.states.Data
 import com.example.musicbands.ui.states.Load
+import com.example.musicbands.ui.states.Screen
+import com.example.musicbands.ui.theme.DarkTextColor
 import com.example.musicbands.ui.theme.WhiteBackgroundColor
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.lang.NullPointerException
-import java.util.concurrent.Callable
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-private var message: String = ""
-private var registered = false;
+private var message = ""
 
 @Composable
-fun Authentication(navController: NavController, id : Long = 0){
-
+fun Registration(navController: NavController) {
     Text(
-        text = stringResource(id = R.string.authorization),
+        text = stringResource(id = R.string.registration),
         fontSize=30.sp,
         color= DarkTextColor,
         textAlign = TextAlign.Center,
@@ -102,17 +100,18 @@ fun Authentication(navController: NavController, id : Long = 0){
     ){
         Button(onClick = {
             val executor = Executors.newSingleThreadExecutor()
-//            executor.submit{
+            executor.submit{
                 onClick(userName, password, navController)
-//            }
+            }
+
 
         }){
             Text(text = stringResource(R.string.login), Modifier
                 .padding(horizontal = 30.dp, vertical = 10.dp),
-                color = DarkTextColor)
+                color = DarkTextColor
+            )
         }
     }
-
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -128,8 +127,8 @@ fun Authentication(navController: NavController, id : Long = 0){
         )
     }
 
-}
 
+}
 private fun onClick(userName: String, password: String, navController: NavController){
 
     try {
@@ -137,21 +136,16 @@ private fun onClick(userName: String, password: String, navController: NavContro
         Load.requests = requests
         val openClientAnswer = requests.openClient()
         if (openClientAnswer) {
-            val registrationAnswer = requests.registration(TypeOfAuth.Registered)
+            val registrationAnswer = requests.registration(TypeOfAuth.NotRegistered)
             if (registrationAnswer.first) {
                 message = ""
                 val command = CommandSerialize("load")
                 Data.allItems.addAll(requests.getCollection(command))
                 Load.owner = userName
                 Load.password = password
+                val activity = Activity()
+                activity.runOnUiThread {  navController.navigate(Screen.Home.route)}
                 navController.navigate(Screen.Home.route)
-//                val activity = Activity()
-//                activity.runOnUiThread {
-//                    navController.navigate(Screen.Home.route)
-//                    println(Thread.currentThread().name)
-//                }
-
-
             } else {
                 message = registrationAnswer.second
                 navController.navigate(Screen.Authentication.route)
@@ -165,14 +159,11 @@ private fun onClick(userName: String, password: String, navController: NavContro
     catch (e: NullPointerException){
         message = "Ошибка работы программы"
     }
+
 }
-
-
 
 @Composable
 @Preview(showBackground = true)
-fun AuthenticationPreview(){
-    Authentication(
-        navController = rememberNavController()
-    )
+fun RegistrationPreview() {
+    Registration(navController = rememberNavController())
 }

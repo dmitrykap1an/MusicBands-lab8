@@ -6,6 +6,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -14,8 +15,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.musicbands.R
 import com.example.musicbands.ui.states.Screen
 import com.example.musicbands.ui.theme.*
+import java.util.concurrent.Future
 
 
 @Composable
@@ -51,7 +54,7 @@ fun HomeScreen(navController: NavHostController ){
 
             ) {
                 Text(
-                    text = "HomePage",
+                    text = stringResource(id = R.string.homePage),
                     style = TextStyle(fontFamily = FontFamily.Cursive),
                     color = WhiteTextColor,
                     fontSize = 20.sp,
@@ -63,7 +66,8 @@ fun HomeScreen(navController: NavHostController ){
             ) {
                 IconButton(
                     modifier = Modifier,
-                    onClick = { navController.navigate(Screen.Profile.route) }
+                    onClick = { navController.navigate(Screen.Profile.route)
+                    }
                 ) {
                     Icon(
                         imageVector = Screen.Profile.icon,
@@ -80,8 +84,6 @@ fun HomeScreen(navController: NavHostController ){
     }
 
 }
-
-
 
 @Composable
 @Preview(showBackground = true)

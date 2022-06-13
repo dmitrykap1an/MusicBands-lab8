@@ -1,4 +1,4 @@
-package com.example.lab8.client.managers
+package com.example.musicbands.client.managers
 
 enum class TypeOfAuth {
     Registered,
