@@ -1,4 +1,4 @@
-#MusicBands
+# MusicBands
 
 This is a toy-project the sole goal of each was for me to
 learn to use JetpackCompose for Android application as per
